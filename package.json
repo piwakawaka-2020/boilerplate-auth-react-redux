@@ -3,16 +3,12 @@
   "version": "1.0.0",
   "description": "a boilerplate for react web app using global store and auth",
   "main": "index.js",
-  "scripts": {
-    "build": "webpack",
-    "server": "node server"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Boyd-Thurston/boilerplate-auth-react-redux.git"
   },
   "keywords": [
-    "boilderplate"
+    "boilderplate", "react", "redux", "authorisation"
   ],
   "author": "Boyd Thurston",
   "license": "ISC",
@@ -20,6 +16,20 @@
     "url": "https://github.com/Boyd-Thurston/boilerplate-auth-react-redux/issues"
   },
   "homepage": "https://github.com/Boyd-Thurston/boilerplate-auth-react-redux#readme",
+  "scripts": {
+    "build": "webpack",
+    "server": "node server"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread"
+    ],
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
