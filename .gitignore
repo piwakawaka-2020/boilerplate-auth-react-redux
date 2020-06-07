@@ -1,3 +1,10 @@
+# Dev DB
+*.sqlite3
+
+# Webpack bundles
+bundle.js
+bundle.js.map
+
 # Logs
 logs
 *.log
