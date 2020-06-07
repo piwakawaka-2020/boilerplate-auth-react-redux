@@ -4,6 +4,7 @@
   "description": "a boilerplate for react web app using global store and auth",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "server": "node server"
   },
   "repository": {
