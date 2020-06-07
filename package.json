@@ -1,0 +1,25 @@
+{
+  "name": "boilerplate-auth-react-redux",
+  "version": "1.0.0",
+  "description": "a boilerplate for react web app using global store and auth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Boyd-Thurston/boilerplate-auth-react-redux.git"
+  },
+  "keywords": [
+    "boilderplate"
+  ],
+  "author": "Boyd Thurston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Boyd-Thurston/boilerplate-auth-react-redux/issues"
+  },
+  "homepage": "https://github.com/Boyd-Thurston/boilerplate-auth-react-redux#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
