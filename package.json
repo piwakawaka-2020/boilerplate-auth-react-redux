@@ -21,6 +21,12 @@
   },
   "homepage": "https://github.com/Boyd-Thurston/boilerplate-auth-react-redux#readme",
   "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
     "express": "^4.17.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
