@@ -10,3 +10,4 @@ const reducer = combineReducers({
 })
 
 // export single reducer
+export default reducer
