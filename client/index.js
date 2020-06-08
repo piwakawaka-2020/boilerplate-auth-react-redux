@@ -1,6 +1,6 @@
 // import external modules
 import React from 'react'
-import ReactDom, { render } from 'react-dom'
+import ReactDom from 'react-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
