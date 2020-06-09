@@ -14,7 +14,10 @@ router.post('/register', register)
 function register (req,res) {
   const { username, password } = req.body
   createUser({username, password})
-    .then(() => res.status(201).json({ok: true}))
+    .then(([id]) => {
+      res.locals.userId = id
+      res.status(201).json({ok: true})
+    })
     .catch(({message}) => {
       // todo research how this works in Postgres
       if(message.includes('UNIQUE constraint failed: users.username')){
