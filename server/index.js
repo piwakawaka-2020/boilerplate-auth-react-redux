@@ -1,4 +1,5 @@
 // local imports
+require('dotenv').config()
 const server = require('./server')
 
 // define port
