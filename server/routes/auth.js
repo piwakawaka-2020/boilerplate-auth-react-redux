@@ -3,20 +3,21 @@ const express = require('express')
 
 // local imports
 const { createUser } = require('../db/users')
+const token = require('../auth/token')
 
 // define router
 const router = express.Router()
 
 // define routes
-router.post('/register', register)
+router.post('/register', register, token.issue)
 
 // supporting functions to routs
-function register (req,res) {
+function register (req,res, next) {
   const { username, password } = req.body
   createUser({username, password})
     .then(([id]) => {
       res.locals.userId = id
-      res.status(201).json({ok: true})
+      next()
     })
     .catch(({message}) => {
       // todo research how this works in Postgres
