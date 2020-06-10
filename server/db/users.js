@@ -13,7 +13,7 @@ function createUser ({username, password }, db = connection) {
 // verifies a users credentails upon sing in
 function verifyUser ({username, password }, db = connection) {
   return generateHash(password)
-    .then(hash => db('users').where(username, 'username').where(hash, 'hash').select('id').first())
+    .then(hash => db('users').where({username: username, hash: hash}).select('id').first())
 }
 
 // export functions

@@ -14,7 +14,7 @@ router.post('/register', register, token.issue)
 
 router.post('/signin', signIn, token.issue)
 
-router.get('/user', verifyJwt({secret: process.env.JWT_SECRET}), user)
+// router.get('/user', verifyJwt({secret: process.env.JWT_SECRET}), user)
 
 // supporting functions to routs
 function register (req, res, next) {
