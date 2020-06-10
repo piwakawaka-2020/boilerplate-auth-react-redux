@@ -3,7 +3,7 @@ const express = require('express')
 const verifyJwt = require('express-jwt')
 
 // local imports
-const { createUser } = require('../db/users')
+const { createUser, verifyUser } = require('../db/users')
 const token = require('../auth/token')
 
 // define router
@@ -41,6 +41,15 @@ function register (req, res, next) {
 
 function signIn (req, res, next) {
   const { username, password } = req.body
+  verifyUser({username, password})
+    .then(id => {
+      res.locals.userId = id
+      next()
+    })
+    .catch(err => res.status(401).json({
+      ok: false,
+      message: 'Username or password are not valid'
+    }))
 }
 
 // export router
