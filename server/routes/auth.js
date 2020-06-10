@@ -1,5 +1,6 @@
 // import external modules
 const express = require('express')
+const verifyJwt = require('express-jwt')
 
 // local imports
 const { createUser } = require('../db/users')
@@ -11,8 +12,12 @@ const router = express.Router()
 // define routes
 router.post('/register', register, token.issue)
 
+router.post('/signin', signIn, token.issue)
+
+router.get('/user', verifyJwt({secret: process.env.JWT_SECRET}), user)
+
 // supporting functions to routs
-function register (req,res, next) {
+function register (req, res, next) {
   const { username, password } = req.body
   createUser({username, password})
     .then(([id]) => {
@@ -32,6 +37,10 @@ function register (req,res, next) {
         message: "Something bad happend. We don't know why."
       })
     })
+}
+
+function signIn (req, res, next) {
+  const { username, password } = req.body
 }
 
 // export router
