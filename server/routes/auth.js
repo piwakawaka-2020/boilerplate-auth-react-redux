@@ -3,7 +3,7 @@ const express = require('express')
 const verifyJwt = require('express-jwt')
 
 // local imports
-const { createUser, verifyUser } = require('../db/users')
+const { createUser, verifyUser, getUserById } = require('../db/users')
 const token = require('../auth/token')
 
 // define router
@@ -11,10 +11,9 @@ const router = express.Router()
 
 // define routes
 router.post('/register', register, token.issue)
-
 router.post('/signin', signIn, token.issue)
+router.get('/user', verifyJwt({secret: process.env.JWT_SECRET}), getUser)
 
-// router.get('/user', verifyJwt({secret: process.env.JWT_SECRET}), user)
 
 // supporting functions to routs
 function register (req, res, next) {
@@ -49,6 +48,19 @@ function signIn (req, res, next) {
     .catch(err => res.status(401).json({
       ok: false,
       message: 'Username or password are not valid'
+    }))
+}
+
+function getUser (req, res) {
+  console.log(req.user.id)
+  getUserById(req.user.id)
+    .then(({username}) => res.json({
+      ok: true,
+      username
+    }))
+    .catch(() => res.status(500).json({
+      ok: false,
+      message: 'An error occurred while retrieving your user profile'
     }))
 }
 

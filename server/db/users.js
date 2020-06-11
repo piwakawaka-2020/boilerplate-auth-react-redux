@@ -16,8 +16,14 @@ function verifyUser ({username, password }, db = connection) {
     .then(hash => db('users').where({username: username, hash: hash}).select('id').first())
 }
 
+// get a users profile
+function getUserById (id,db =connection) {
+  return db('users').where('id', id).select('username').first()
+}
+
 // export functions
 module.exports = {
   createUser,
-  verifyUser
+  verifyUser,
+  getUserById
 }
