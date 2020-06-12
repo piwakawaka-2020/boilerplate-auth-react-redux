@@ -20,6 +20,7 @@ function register (req, res, next) {
   const { username, password } = req.body
   createUser({username, password})
     .then(([id]) => {
+      console.log(id)
       res.locals.userId = id
       next()
     })
@@ -40,7 +41,7 @@ function register (req, res, next) {
 
 function signIn (req, res, next) {
   const { username, password } = req.body
-  verifyUser({username, password})
+  verifyUser(username, password)
     .then(id => {
       res.locals.userId = id
       next()
