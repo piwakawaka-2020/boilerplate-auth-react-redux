@@ -1,6 +1,9 @@
 // import external modules
 import request from 'superagent'
 
+// local imports
+import getToken from '../utils/lib'
+
 // define routes URLS
 const baseUrl = '/api/v1/'
 const authRoute = '/auth/'
@@ -22,3 +25,9 @@ export function userSignIn(credentails) {
 }
 
 // get a varified users details
+export function getUserDetails(userId) {
+  return request.post(`${baseUrl}${authRoute}user`)
+    .set({ 'Content-Type': 'application/json'})
+    .set({ 'Authorization': `Bearer ${getToken}`})
+    .then(res => res.body)
+}
