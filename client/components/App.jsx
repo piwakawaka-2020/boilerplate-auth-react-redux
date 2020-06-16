@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getToken, isAuthenticated } from '../utils/lib'
 
 // local imports
+import SignIn from './SignIn'
 
 // define class component 
 export class App extends React.Component {
