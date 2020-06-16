@@ -15,5 +15,10 @@ export function addNewUser(user) {
 }
 
 // verify a users credentails
+export function userSignIn(credentails) {
+  return request.post(`${baseUrl}${authRoute}singin`)
+  .send(user)
+  .then(res => res.body)
+}
 
 // get a varified users details
