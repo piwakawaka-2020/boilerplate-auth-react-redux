@@ -1,5 +1,6 @@
 // local imports
 import { addNewUser, userSignIn, getUserDetails } from '../apis'
+import { setToken } from '../utils/lib'
 
 // export action calls
 export const SAVE_USER = 'SAVE_USER'
@@ -18,6 +19,10 @@ export function saveUser(details){
 export function logIn(creds){
   return dispatch => {
     userSignIn(creds)
+    .then(resBody => {
+      setToken(resBody.token)
+      return resBody
+    })
     // .then(() => getUserDetails())
     // .then(userDetails => {dispatch(saveUser(userDetails))})
   }

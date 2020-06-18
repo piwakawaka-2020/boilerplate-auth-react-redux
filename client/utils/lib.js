@@ -1,9 +1,7 @@
 
 // captures JWT details from local store
 export function getToken () {
-  const localStorage = global.window.localStorage
-  const localStorageKeyName = 'token'
-  return localStorage.getItem(localStorageKeyName)
+  return localStorage.getItem('token')
 }
 
 // checks to see if user is authenticated or not

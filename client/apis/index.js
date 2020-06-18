@@ -5,21 +5,21 @@ import request from 'superagent'
 import { getToken } from '../utils/lib'
 
 // define routes URLS
-const baseUrl = '/api/v1/'
-const authRoute = 'auth/'
+const baseUrl = '/api/v1'
+const authRoute = '/auth'
 
 // api calls
 
 // reister a new user
 export function addNewUser(user) {
-  return request.post(`${baseUrl}${authRoute}register`)
+  return request.post(`${baseUrl}${authRoute}/register`)
     .send(user)
     .then(res => res.body)
 }
 
 // verify a users credentails
 export function userSignIn(credentails) {
-  return request.post(`${baseUrl}${authRoute}signin`)
+  return request.post(`${baseUrl}${authRoute}/signin`)
   .send(credentails)
   .then(res => res.body)
 }
