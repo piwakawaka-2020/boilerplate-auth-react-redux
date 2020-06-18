@@ -24,7 +24,7 @@ class SignIn extends React.Component {
     this.props.dispatch(logIn(this.state))
     this.setState({
       username: '',
-      pasword: ''
+      password: ''
     })
   }
 
