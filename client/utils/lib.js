@@ -16,3 +16,8 @@ export function isAuthenticated () {
     return false
   }
 }
+
+// set JWT token in local storage
+export function setToken (token) {
+  localStorage.setItem('token', token)
+}
