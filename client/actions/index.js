@@ -18,7 +18,7 @@ export function saveUser(details){
 export function logIn(creds){
   return dispatch => {
     userSignIn(creds)
-    .then(() => getUserDetails())
-    .then(userDetails => {dispatch(saveUser(userDetails))})
+    // .then(() => getUserDetails())
+    // .then(userDetails => {dispatch(saveUser(userDetails))})
   }
 }

@@ -7,10 +7,10 @@ import { logIn } from '../actions'
 
 // define class component
 class SignIn extends React.Component {
-  // create initial local state
+  // set inital state
   state = {
     username: '',
-    pasword: ''
+    password: '',
   }
 
   // handler for input events
@@ -20,8 +20,12 @@ class SignIn extends React.Component {
 
   // hander for submit event
   handleSubmit = event => {
-    event.preventDefult()
-    this.props.dispatch(logIn)
+    event.preventDefault()
+    this.props.dispatch(logIn(this.state))
+    this.setState({
+      username: '',
+      pasword: ''
+    })
   }
 
   // display component
@@ -29,8 +33,8 @@ class SignIn extends React.Component {
     return <form onSubmit={this.handleSubmit}>
       <label>username:</label>
       <input type='text' onChange={this.handleChange} name='username' value={this.state.username}/>
-      <label>username:</label>
-      <input type='password' onChange={this.handleChange} name='username' value={this.state.username}/>
+      <label>password:</label>
+      <input type='password' onChange={this.handleChange} name='password' value={this.state.password}/>
       <input type='submit' value='Sign in'/>
     </form>
   }

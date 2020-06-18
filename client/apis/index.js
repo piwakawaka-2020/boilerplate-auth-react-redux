@@ -2,11 +2,11 @@
 import request from 'superagent'
 
 // local imports
-import getToken from '../utils/lib'
+import { getToken } from '../utils/lib'
 
 // define routes URLS
 const baseUrl = '/api/v1/'
-const authRoute = '/auth/'
+const authRoute = 'auth/'
 
 // api calls
 
@@ -19,15 +19,15 @@ export function addNewUser(user) {
 
 // verify a users credentails
 export function userSignIn(credentails) {
-  return request.post(`${baseUrl}${authRoute}singin`)
-  .send(user)
+  return request.post(`${baseUrl}${authRoute}signin`)
+  .send(credentails)
   .then(res => res.body)
 }
 
 // get a varified users details
 export function getUserDetails(userId) {
-  return request.post(`${baseUrl}${authRoute}user`)
+  return request.get(`${baseUrl}${authRoute}user`)
     .set({ 'Content-Type': 'application/json'})
-    .set({ 'Authorization': `Bearer ${getToken}`})
+    .set({ 'Authorization': `Bearer ${getToken()}`})
     .then(res => res.body)
 }
