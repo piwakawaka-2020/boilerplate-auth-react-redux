@@ -26,7 +26,7 @@ export function userSignIn(credentails) {
 
 // get a varified users details
 export function getUserDetails(userId) {
-  return request.get(`${baseUrl}${authRoute}user`)
+  return request.get(`${baseUrl}${authRoute}/user`)
     .set({ 'Content-Type': 'application/json'})
     .set({ 'Authorization': `Bearer ${getToken()}`})
     .then(res => res.body)

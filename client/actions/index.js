@@ -23,7 +23,7 @@ export function logIn(creds){
       setToken(resBody.token)
       return resBody
     })
-    // .then(() => getUserDetails())
-    // .then(userDetails => {dispatch(saveUser(userDetails))})
+    .then(() => getUserDetails())
+    .then(userDetails => {dispatch(saveUser(userDetails))})
   }
 }
