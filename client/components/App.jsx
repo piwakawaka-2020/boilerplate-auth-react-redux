@@ -13,16 +13,16 @@ export class App extends React.Component {
 
   handleClick = () => {
     this.props.dispatch({type: LOG_OFF_USER})
-    this.props.history.push('/')
   }
 
   render(){
+    const authed = isAuthenticated()
     return(
       <Router>
         <h1>Development has begun</h1>
         <h2>Behold I am the App component</h2>
-        {isAuthenticated() && <button onClick={this.handleClick}>Log off</button>}
-        {!isAuthenticated() && <>
+        {authed && <button onClick={this.handleClick}>Log off</button>}
+        {!authed && <>
           <Link to='/signin'> Sign In </Link>
           <button>Register</button>
         </>}
