@@ -1,5 +1,5 @@
 // local imports
-import { SAVE_USER } from "../actions"
+import { SAVE_USER, LOG_OFF_USER } from "../actions"
 
 // define initial state
 const initialState = []
@@ -8,7 +8,10 @@ const initialState = []
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_USER:
-      return {username: action.username} 
+      return {username: action.username}
+    case LOG_OFF_USER:
+      localStorage.removeItem('token')
+      return initialState 
     default: 
       return state
   }

@@ -4,6 +4,7 @@ import { setToken } from '../utils/lib'
 
 // export action calls
 export const SAVE_USER = 'SAVE_USER'
+export const LOG_OFF_USER = 'LOG_OFF_USER'
 
 // define dispatch actions
 export function saveUser(details){
