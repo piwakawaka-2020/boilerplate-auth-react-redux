@@ -70,10 +70,19 @@ export class App extends React.Component {
           <input onChange={this.handleChange} name='registerConfirmPassword' value={this.state.registerConfirmPassword} type='password'/>
           <input type='submit' value='Register'/>
         </form>
+        <h2>Example of logged in user</h2>
+        {this.props.user.username? <p>Hello {this.props.user.username}</p>: <p>you are not logged in</p>}
         <button onClick={this.handleLogOff}>Log Off</button>
       </>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps(globalState) {
+  return {
+    user: globalState.user
+  }
+}
+
+
+export default connect(mapStateToProps)(App)
