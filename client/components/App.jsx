@@ -3,7 +3,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 // local imports
-import { LOG_OFF_USER, logIn } from '../actions'
+import { USER_LOG_OFF, logIn, saveUser } from '../actions'
+import { isAuthenticated } from '../utils/lib'
+import { getUserDetails } from '../apis'
 
 
 // define class component 
@@ -15,8 +17,15 @@ export class App extends React.Component {
     signInPassword: '',
     registerUser: '',
     registerPassword: '',
-    registerConfirmPassword: ''
+    registerConfirmPassword: '',
   }
+
+  // inital auth validation call
+  componentDidMount(){
+    isAuthenticated() && getUserDetails()
+    .then(userDetails => {this.props.dispatch(saveUser(userDetails))})
+  }
+
 
   // event handler for input events
   handleChange = event => {
@@ -25,11 +34,11 @@ export class App extends React.Component {
   
   // event handler for user log off
   handleLogOff = () => {
-    this.props.dispatch({type: LOG_OFF_USER})
+    this.props.dispatch({type: USER_LOG_OFF})
   }
 
   // event handler for user sign in
-  handleSubmit = event => {
+  handleSignIn = event => {
     event.preventDefault()
     this.props.dispatch(logIn({
       username: this.state.signInUser,
@@ -52,11 +61,11 @@ export class App extends React.Component {
       <>
         <h1>Development has begun</h1>
         <h2>Behold I am the App component</h2>
-        <form>
+        <form onSubmit={this.handleSignIn}>
           <h2>Example Sign In Form</h2>
-          <lable>username: </lable>
+          <label>username: </label>
           <input onChange={this.handleChange} name='signInUser' value={this.state.signInUser} type='text'/>
-          <label>password: </label>
+          <label>  password: </label>
           <input onChange={this.handleChange} name='signInPassword' value={this.state.signInPassword} type='password'/>
           <input type='submit' value='Sign in'/>
         </form>
@@ -64,14 +73,14 @@ export class App extends React.Component {
           <h2>Example Registration Form</h2>
           <label>username: </label>
           <input onChange={this.handleChange} name='registerUser' value={this.state.registerUser} type='text'/>
-          <label>password: </label>
+          <label>  password: </label>
           <input onChange={this.handleChange} name='registerPassword' value={this.state.registerPassword} type='password'/>
-          <label>confirm password: </label>
+          <label>  confirm password: </label>
           <input onChange={this.handleChange} name='registerConfirmPassword' value={this.state.registerConfirmPassword} type='password'/>
           <input type='submit' value='Register'/>
         </form>
         <h2>Example of logged in user</h2>
-        {this.props.user.username? <p>Hello {this.props.user.username}</p>: <p>you are not logged in</p>}
+        {this.props.user.hasOwnProperty('username')? <p>Hello {this.props.user.username}</p>: <p>you are not logged in</p>}
         <button onClick={this.handleLogOff}>Log Off</button>
       </>
     )

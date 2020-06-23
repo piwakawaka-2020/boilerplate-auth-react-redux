@@ -28,3 +28,5 @@ export function logIn(creds){
     .then(userDetails => {dispatch(saveUser(userDetails))})
   }
 }
+
+// register function
