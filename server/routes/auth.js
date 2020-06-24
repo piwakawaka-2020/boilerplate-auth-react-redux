@@ -20,7 +20,6 @@ function register (req, res, next) {
   const { username, password } = req.body
   createUser({username, password})
     .then(([id]) => {
-      console.log(id)
       res.locals.userId = id
       next()
     })
