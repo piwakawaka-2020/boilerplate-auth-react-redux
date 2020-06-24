@@ -30,3 +30,14 @@ export function logIn(creds){
 }
 
 // register function
+export function newUserLogIn(details){
+  return dispatch => {
+    addNewUser(details)
+    .then(resBody => {
+      setToken(resBody.token)
+      return resBody
+    })
+    .then(() => getUserDetails())
+    .then(userDetails => {dispatch(saveUser(userDetails))})
+  }
+}
