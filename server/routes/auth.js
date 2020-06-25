@@ -52,7 +52,6 @@ function signIn (req, res, next) {
 }
 
 function getUser (req, res) {
-  console.log(req.user.id)
   getUserById(req.user.id)
     .then(({username}) => res.json({
       ok: true,
